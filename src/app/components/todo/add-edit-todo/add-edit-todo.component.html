@@ -1,0 +1,30 @@
+<form [formGroup]="todoForm" class="searchcontainer" (ngSubmit)="onSubmit()">
+  <div class="search-part">
+    <mat-form-field appearance="outline">
+      <mat-label>Add Or Edit Todo...</mat-label>
+      <input
+        matInput
+        placeholder="Add Or Edit..."
+        id="title"
+        name="title"
+        formControlName="title"
+      />
+      <div
+        class="error"
+        *ngIf="submitted && todoFormControls.title.errors?.['required']"
+      >
+        Title is required.
+      </div>
+      <div
+        class="error"
+        *ngIf="submitted && todoFormControls.title.errors?.['maxlength']"
+      >
+        The max size of the Title must be 255 characters long.
+      </div>
+    </mat-form-field>
+    <input id="id" name="id" formControlName="id" type="hidden" />
+    <button type="submit" mat-stroked-button color="primary" class="btn-submit">
+      Submit
+    </button>
+  </div>
+</form>

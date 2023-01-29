@@ -1,0 +1,26 @@
+<form [formGroup]="loginForm" class="searchcontainer" (ngSubmit)="onSubmit()">
+  <div class="search-part">
+    <mat-form-field appearance="outline">
+      <mat-label>Please Enter your email to continue...</mat-label>
+      <input
+        matInput
+        placeholder="Please Enter your email to continue..."
+        id="email"
+        name="email"
+        formControlName="email"
+      />
+      <mat-error class="error" *ngIf="submitted && email.invalid">
+        <span>
+          {{ getErrorMessage() }}
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <button type="submit" mat-stroked-button color="primary" class="btn-submit">
+      Continue
+    </button>
+  </div>
+</form>
+
+<div *ngIf="isLoading" class="loading">
+  <mat-spinner></mat-spinner>
+</div>
